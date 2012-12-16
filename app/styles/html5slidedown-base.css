@@ -10,8 +10,12 @@
 */
 
 /* Framework */
-/*TODO: Download this font locally */
-@import url(http://fonts.googleapis.com/css?family=Crimson+Text);
+@font-face {
+  font-family: 'Crimson Text';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Crimson Text'), local('CrimsonText-Roman'), url(../fonts/crimsontext/v3/3IFMwfRa07i-auYR-B-zNXhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+}
 
 html {
   height: 100%;
