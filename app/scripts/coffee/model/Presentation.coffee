@@ -7,20 +7,13 @@ class Presentation
     slide = new Slide(data)
     @slides.push(slide)
   
-  loadPresentation: () ->
-    # Remove hardcoded bits later
-    result = null
-    filename = "https://c9.io/jwill/html5slidedownapp/workspace/app/preso-sample.json"
-    self = this
-    handler = (x, text) ->
-      result = text
-      self.jsonData = JSON.parse(result)
-      # Set title
-      self.setTitle(self.jsonData.title)
-      # Parse slides
-      self.parseSlides(self.jsonData)
-
-    joFile(filename, handler, null, 10)
+  loadPresentation: (data) ->
+    @jsonData = data
+    @setTitle(@jsonData.title)
+    @parseSlides(@jsonData)
+    
+  generateKey: () ->
+    @title.toLowerCase()
   
   parseSlides: (data) ->
     slides = []
@@ -44,7 +37,9 @@ class Presentation
     @card = new joCard([
       @html
       ])
-    window.app.stack.push(@card)
+    app.presoCard = @card
+    app.stack.pop(app.presoCard)
+    app.stack.push(app.presoCard)
     onPageLoaded()
     handleDomLoaded()
   
@@ -65,15 +60,5 @@ class Presentation
     # <section class='slides layout-regular'>
     # Slides
     # </section></body></html>
-      
-  markdownify: (source, target) ->
-    # Might need to use DOMParser
-    # Get all of the article elements with the data-markdown attribute.
-    articles = document.querySelectorAll('article[data-markdown]');
-    converter = new Showdown.converter();
-    for article in articles
-      # Replace the contents of the article with its markdownified version.
-      html = converter.makeHtml(article.innerHTML);
-      article.innerHTML = html;
       
 window.Presentation = Presentation

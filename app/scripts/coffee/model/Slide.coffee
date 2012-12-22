@@ -13,7 +13,7 @@ class Slide
     return """
       <article data-markdown>
       #{@data}
-      </article>
+      </article>\n\n
     """
 
 window.Slide = Slide

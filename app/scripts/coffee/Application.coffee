@@ -8,6 +8,11 @@ class Application
     
     @home_screen = new HomeScreen(@db)
     @stack.push(@home_screen.getView())
+    
+    @setupHotkeys()
+    
+    @presoCard = null
+    @editorCard = null
   
   initializeFileSystem: () ->
     #@filer = new Filer()
@@ -18,7 +23,17 @@ class Application
     # Create db
     self = this
     @db = new Lawnchair({name:'html5slidedown'}, doNothing )
-      
+  
+  setupHotkeys: () ->
+    self = this
+    @k = new Kibo()
+    @k.down('f1', () ->
+      self.stack.back()
+    )
+    @k.down('f2', () ->
+      self.stack.forward()
+    )
+  
   onError: (e) ->
     console.log('Error' + e.name)
     
