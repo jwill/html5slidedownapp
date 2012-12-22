@@ -1,0 +1,29 @@
+{
+    "title": "Sample Presentation",
+    "slides": [
+        {
+            "content": [
+                "# Talk Title",
+                "",
+                "[+Boris Smus](http://smus.com/+) [@borismus](http://twitter.com)",
+                "Location of talk",
+                "Month Year"
+            ]
+        },
+        {
+            "content": [
+                "### Agenda",
+                "",
+                "*Introduction",
+                "*Skitips",
+                "*Conclusion"
+            ]
+        },
+        {
+            "content": [
+                "<pre>var x = 3.14;</pre>"
+            ]
+        }
+    ],
+    "type": "presentation"
+}
