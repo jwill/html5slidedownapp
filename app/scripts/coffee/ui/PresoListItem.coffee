@@ -2,8 +2,10 @@ class PresoListItem extends joControl
   constructor: (@object) ->
     @title = @object.title
     @titleLabel = new joLabel(@title)
+    @numSlides = @object.slides.length
     @startButton = new joButton("Start")
     @editButton = new joButton("Edit")
+    @deleteButton = new joButton("Delete")
     
     @onSelect()
     
@@ -11,11 +13,19 @@ class PresoListItem extends joControl
     @container = new joFlexrow()
     #container.push(new joImage())
     @container.push(new joLabel(@title))
-    @container.push(new joLabel("Num slides"))
+    @container.push(new joLabel(@numSlides + " slides"))
     @container.push(@startButton)
     @container.push(@editButton)
+    @container.push(@deleteButton)
     @container
-    
+  
+  isManageListItem: (state) ->
+    if state
+      @startButton.disable()
+    else 
+      @editButton.disable()
+      @deleteButton.disable()
+  
   onSelect: () ->
     self = this
     @startButton.selectEvent.subscribe(() ->
@@ -34,6 +44,15 @@ class PresoListItem extends joControl
       slideText += slide.toString() for slide in preso.slides
       window.e = new CodeEditor(preso)
       window.e.setValue(slideText.replace(/<br\/>/g,""))
+    )
+    @deleteButton.selectEvent.subscribe(() ->
+      #app.screen.alert("Deleted Presentation.")
+      key = self.object.title.toLowerCase()
+      app.db.remove(key, ()->
+        # TODO Refresh display
+        app.screen.alert("Removed "+self.object.title)
+        
+      )
     )
     
   toString: () ->

@@ -29,19 +29,19 @@ class HomeScreen
     # get list of presentations from db
     @presos = []
     self = this
+    @list.clear()
     @db.all((items) ->
       titles = []
       for item in items
         # Add to collection if a presention
         if item.hasOwnProperty("type") && item["type"] == "presentation"
           self.presos.push(item) 
-          titles.push(new PresoListItem(item).getView())
+          listItem = new PresoListItem(item)
+          #listItem.isManageListItem(false)
+          titles.push(listItem.getView())
       self.list.push(titles)
+      # No presos to display suggest creating one
+      self.list.push(new joFlexrow([new joLabel("Create a preso")])) if titles.length == 0
     )
-    # create new items for them
-
-    
-    # add items to list using setData([])
-    return @presos
 
 window.HomeScreen = HomeScreen

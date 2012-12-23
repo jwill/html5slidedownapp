@@ -19,12 +19,13 @@ class Presentation
     slides = []
     i = 1
     for slide in data.slides
-      content = slide.content.join('<br/>\n')
+      content = slide.content.join('\n')
       s = new Slide(i++)
       s.setContent(content)
       slides.push(s)
       console.log(content)
     @slides = slides
+    window.preso = this
     
   setTitle: (@title) ->
   
@@ -33,7 +34,7 @@ class Presentation
     
     slideText += slide.toString() for slide in @slides
     console.log(slideText)
-    @html = new joHTML("<section class='slides layout-regular'>#{slideText}</section>")
+    @html = new joHTML("<section class='slides layout-regular'>\n#{slideText}</section>")
     @card = new joCard([
       @html
       ])

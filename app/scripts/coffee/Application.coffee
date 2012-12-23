@@ -27,10 +27,12 @@ class Application
   setupHotkeys: () ->
     self = this
     @k = new Kibo()
-    @k.down('f1', () ->
+    # f1 and f2 for Chromebook
+    # Ctrl-b and Ctrl-m for laptops
+    @k.down(['f1', 'ctrl b'], () ->
       self.stack.back()
     )
-    @k.down('f2', () ->
+    @k.down(['f2','ctrl m'], () ->
       self.stack.forward()
     )
   

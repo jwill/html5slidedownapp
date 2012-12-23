@@ -7,7 +7,7 @@ class HomeScreen
     @menu = new joFlexrow()
     
     @view = new joCard([
-      new joTitle("Presentations")
+      new joTitle("Manage Presentations")
       @menu
       @list
       new joFooter([new joLabel("Footer")])
