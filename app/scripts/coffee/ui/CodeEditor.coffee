@@ -7,7 +7,6 @@ class CodeEditor
     app.stack.pop(app.editorCard)
     app.editorCard = @card
     app.stack.push(app.editorCard)
-    app.stack.push(app.editorCard)
     
     @editor = ace.edit("editor")
     @editor.setTheme("ace/theme/chrome")
@@ -21,8 +20,7 @@ class CodeEditor
   setValue: (text) ->
     @editor.setValue(text)
   
-  saveFile: (editor) ->
-    numLines = editor.getSession().getLength()
+  compileSlides: (editor, numLines) ->
     openedArticle = false
     slideLines = []
     slides = []
@@ -39,10 +37,17 @@ class CodeEditor
         openedArticle = false
       else if openedArticle
         slideLines.push line
+    return slides
+    
+  saveFile: (editor) ->
+    numLines = editor.getSession().getLength()
+    slides = @compileSlides(editor, numLines)
+    
     presentation = {
       title: @preso.title
       type:"presentation"
       slides: slides
+      images: @preso.images
       key: @preso.generateKey()
     }
     
@@ -50,8 +55,6 @@ class CodeEditor
       app.home_screen.getPresentations()
     )
     app.screen.alert("Saved file.")
-    
-    console.log slides
   
   setupFunctions: () ->
     self = this

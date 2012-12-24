@@ -9,7 +9,7 @@ class Slide
   getIndex: () -> @index
   setVisible: (@isVisible) ->
   
-  toString: () ->
+  toString: (imageData) ->
     return """
       <article data-markdown>
       #{@data}

@@ -5,6 +5,7 @@ class Application
     jo.load()
     @stack = new joStack()
     @screen = new joScreen(@stack)
+    @utils = new Utils()
     
     @home_screen = new HomeScreen(@db)
     @stack.push(@home_screen.getView())

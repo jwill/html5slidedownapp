@@ -12,5 +12,6 @@ function onPageLoaded() {
     // Replace the contents of the article with its markdownified version.
     var html = converter.makeHtml(article.innerHTML);
     article.innerHTML = html;
+    console.log(html);
   }
 }
