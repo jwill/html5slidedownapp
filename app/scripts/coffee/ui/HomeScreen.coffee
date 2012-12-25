@@ -1,17 +1,15 @@
 class HomeScreen
   constructor: (@db) ->
-    
-    @currentPreso = null
-    
     @list = new joFlexcol()
-    @menu = new joFlexrow()
+    @createButton = new joButton("Create A Presentation")
     
     @view = new joCard([
       new joTitle("Presentations")
-      @menu
       @list
+      new joFlexrow([@createButton])
       new joFooter([new joLabel("Footer")])
     ])
+    
     @getPresentations()
     @onSelect()
     
@@ -37,11 +35,8 @@ class HomeScreen
         if item.hasOwnProperty("type") && item["type"] == "presentation"
           self.presos.push(item) 
           listItem = new PresoListItem(item)
-          #listItem.isManageListItem(false)
           titles.push(listItem.getView())
       self.list.push(titles)
-      # No presos to display suggest creating one
-      self.list.push(new joFlexrow([new joLabel("Create a preso")])) if titles.length == 0
     )
 
 window.HomeScreen = HomeScreen

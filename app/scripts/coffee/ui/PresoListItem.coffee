@@ -6,6 +6,7 @@ class PresoListItem extends joControl
     @startButton = new joButton("Start")
     @editButton = new joButton("Edit")
     @deleteButton = new joButton("Delete")
+    @manageExpando = new ManageExpando(@object)
     
     @onSelect()
     
@@ -15,16 +16,8 @@ class PresoListItem extends joControl
     @container.push(new joLabel(@title))
     @container.push(new joLabel(@numSlides + " slides"))
     @container.push(@startButton)
-    @container.push(@editButton)
-    @container.push(@deleteButton)
+    @container.push(@manageExpando.getView())
     @container
-  
-  isManageListItem: (state) ->
-    if state
-      @startButton.disable()
-    else 
-      @editButton.disable()
-      @deleteButton.disable()
   
   onSelect: () ->
     self = this
@@ -35,25 +28,25 @@ class PresoListItem extends joControl
         preso.loadPresentation(self.object)
         preso.showPresentation()
     )
-    @editButton.selectEvent.subscribe(() ->
-      # open preso in editor window
-      preso = new Presentation()
-      console.log(self.object)
-      preso.loadPresentation(self.object)
-      slideText = ""
-      slideText += slide.toString() for slide in preso.slides
-      window.e = new CodeEditor(preso)
-      window.e.setValue(slideText.replace(/<br\/>/g,""))
-    )
-    @deleteButton.selectEvent.subscribe(() ->
-      #app.screen.alert("Deleted Presentation.")
-      key = self.object.title.toLowerCase()
-      app.db.remove(key, ()->
-        # TODO Refresh display
-        app.screen.alert("Removed "+self.object.title)
-        
-      )
-    )
+    #@editButton.selectEvent.subscribe(() ->
+    #   open preso in editor window
+      #preso = new Presentation()
+      #console.log(self.object)
+      #preso.loadPresentation(self.object)
+      #slideText = ""
+      #slideText += slide.toString() for slide in preso.slides
+      #window.e = new CodeEditor(preso)
+      #window.e.setValue(slideText.replace(/<br\/>/g,""))
+    #)
+    #@deleteButton.selectEvent.subscribe(() ->
+    #  app.screen.alert("Deleted Presentation.")
+      #key = self.object.title.toLowerCase()
+      #app.db.remove(key, ()->
+    #     TODO Refresh display
+        #app.screen.alert("Removed "+self.object.title)
+        #
+      #)
+    #)
     
   toString: () ->
     @title

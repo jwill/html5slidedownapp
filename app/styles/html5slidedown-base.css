@@ -188,16 +188,6 @@ div.biglogo {
 
   background-size: 600px;
 }
-.s75 {
-  background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACHElEQVR4Xu3VIW8CMRyG8WLAoUChQIECxffXBAEKFA4FChSYbf/LSi7AlnsuXMaSp47tvV77y9tea7lcfiRHJYGWWJWcipBY1a3EAlZiiUUEQNY7SywgAKI2SywgAKI2SywgAKI2SywgAKI2SywgAKI2SywgAKI2SywgAKI2SywgAKI2SywgAKI2SywgAKI2SywgAKI2SywgAKI2SywgAKI2SywgAKI266+xNptNOp/Pt2VMp9N0uVzSdru9/W04HKZ+v195qU3MWfnl38FGmrXb7VKv10vH47F4zWg0SqfTqcAKuBidTgettYk50QK+wo1g5UUsFos0Ho9Tt9u9YbXb7eLfk8nkASzygRwjoOfz+cN+6JwU5Ld8Y1iHwyHt9/s0m82K98cxjN+5cfE7wMoj2hcNym0M5PKoM+e/wIpNx1EbDAYP681H8llz4m7Kzbt/sO6crwJrrFmr1aq4q8rtCKTykXyGFc/FyI0sb7TunG+NFUdsvV4Xl3n5Io/7Jr6C1+u1uMPuj2Ecs/xRiONa/lrWnfNVUDFPI83KG7tvTr5zfrqTAjMf27jfys/XnfPtsV65wHeaq5FmvdMGX7kWsYCmWGIBARC1WWIBARC1WWIBARC1WWIBARC1WWIBARC1WWIBARC1WWIBARC1WWIBARC1WWIBARC1WWIBARC1WWIBARC1WWIBARC1WWIBARC1WWIBARC1WQDrE5Le4lzuv4mOAAAAAElFTkSuQmCC);
-  width: 75px;
-  height: 75px;
-}
-article.biglogo {
-  background: white url(../images/chrome.png) 50% 50% no-repeat;
-
-  background-size: 600px;
-}
 
 article.html5 {
   background: white url(../images/HTML5_Logo_512.png) 50% 50% no-repeat;

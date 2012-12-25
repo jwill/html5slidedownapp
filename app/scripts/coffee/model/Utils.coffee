@@ -13,15 +13,4 @@ class Utils
       </head>
     """
   
-  convertImageURLToBase64: (url) ->
-    image = new Image()
-    canvas = document.createElement("canvas")
-    image.onload = (i) ->
-      canvas.width = image.width
-      canvas.height = image.height
-      ctx = canvas.getContext("2d")
-      ctx.drawImage(image,0,0)
-      joLog(canvas.toDataURL())
-    image.src = url
-  
 window.Utils = Utils
