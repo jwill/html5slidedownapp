@@ -1,7 +1,5 @@
 class Slide
-  constructor: (@index) ->
-    if @index is undefined
-      @index = 1
+  constructor: (@data) ->
       
   setContent: (@data) ->  
   getContent: () -> @data

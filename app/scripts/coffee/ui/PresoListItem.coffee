@@ -4,8 +4,6 @@ class PresoListItem extends joControl
     @titleLabel = new joLabel(@title)
     @numSlides = @object.slides.length
     @startButton = new joButton("Start")
-    @editButton = new joButton("Edit")
-    @deleteButton = new joButton("Delete")
     @manageExpando = new ManageExpando(@object)
     
     @onSelect()

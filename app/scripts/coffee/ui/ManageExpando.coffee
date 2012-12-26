@@ -1,20 +1,15 @@
 class ManageExpando
   constructor: (@object) ->
-    @editButton = new joButton("Edit")
-    @deleteButton = new joButton("Delete")
-    @changeTitleButton = new joButton("Change Title")
-    @themeButton = new joButton("Change Theme")
-    @manageAssetsButton = new joButton("Manage Assets")
-    
     @view = new joExpando([
       new joExpandoTitle("Manage"),
       new joExpandoContent([
-        @manageAssetsButton
-        @editButton
-        @deleteButton
+        @manageAssetsButton = new joButton("Manage Assets")
+        @editButton = new joButton("Edit")
+        @deleteButton = new joButton("Delete")
         new joDivider()
-        @changeTitleButton
-        @themeButton
+        @changeTitleButton = new joButton("Change Title")
+        @themeButton = new joButton("Change Theme")
+
       ])
     ])
     
@@ -50,7 +45,7 @@ class ManageExpando
       #app.screen.alert("Deleted Presentation.")
       key = self.object.title.toLowerCase()
       app.db.remove(key, ()->
-        # TODO Refresh display
+        app.home_screen.getPresentations()        
         app.screen.alert("Removed "+self.object.title)
         
       )
@@ -63,7 +58,8 @@ class ManageExpando
       self.notImplemented()  
     )
     @changeTitleButton.selectEvent.subscribe(() ->
-      self.notImplemented()  
+      self.notImplemented()
+      app.screen.showPopup(new CreateTitleCard(self.object.title).getView())
     )
 
 window.ManageExpando = ManageExpando

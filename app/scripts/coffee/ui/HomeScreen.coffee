@@ -18,6 +18,10 @@ class HomeScreen
   
   onSelect: () ->
     self = this
+    @createButton.selectEvent.subscribe( () ->
+      card = new CreateTitleCard()
+      app.screen.showPopup(card.getView())
+    )
     #@list.selectEvent.subscribe( (id) ->
     #  console.log(id)
     #  self.currentPreso = self.presos[id]
